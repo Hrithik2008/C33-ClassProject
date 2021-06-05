@@ -44,8 +44,6 @@ function setup(){
 
     //log6 = new Log(230,180,80, PI/2);
     slingshot = new SlingShot(bird.body,{x:200, y:50});
-
-    getTime();
 }
 
 function draw(){
@@ -100,19 +98,4 @@ function keyPressed(){
         bird.trajectory = [];
         gameState = "onSling";
     }
-}
-async function getTime(){
-    var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-    var responseJson = await response.json();
-    console.log(responseJson);
-    var dt = responseJson.datetime;
-    console.log(dt);
-    var hr = dt.slice(11,13);
-    console.log(hr);
-    if(hr>=6&& hr <= 18){
-        bg = "sprites/bg.png";
-    }else{
-       bg = "sprites/bg2.jpg"
-    }
-    backgroundImg = loadImage(bg);
 }
